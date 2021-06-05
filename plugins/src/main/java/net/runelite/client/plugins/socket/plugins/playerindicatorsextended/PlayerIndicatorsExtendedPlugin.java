@@ -15,9 +15,7 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.PluginManager;
 import net.runelite.client.plugins.socket.org.json.JSONObject;
-import net.runelite.client.plugins.socket.packet.SocketPlayerJoin;
-import net.runelite.client.plugins.socket.packet.SocketPlayerLeave;
-import net.runelite.client.plugins.socket.packet.SocketReceivePacket;
+import net.runelite.client.plugins.socket.packet.*;
 import net.runelite.client.ui.overlay.OverlayManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,31 +82,38 @@ public class PlayerIndicatorsExtendedPlugin extends Plugin {
     }
 
     @Subscribe
-    public void onSocketReceivePacket(SocketReceivePacket packet) {
-        JSONObject data = packet.getPayload();
-        if (!data.has("player-stats"))
-            return;
-        String localName = this.client.getLocalPlayer().getName();
-        String targetName = data.getString("name");
-        if (!targetName.equals(localName))
-            if (!this.names.contains(targetName))
-                this.names.add(targetName);
+    public void onSocketMembersUpdate(SocketMembersUpdate event)
+    {
+        this.names.clear();
+        for(String s : event.getMembers())
+        {
+            if(!s.equals(client.getLocalPlayer().getName()))
+            {
+                names.add(s);
+            }
+        }
     }
 
     @Subscribe
-    public void onSocketPlayerLeave(SocketPlayerLeave event) {
-        this.names.remove(event.getPlayerName());
+    public void onSocketShutdown(SocketShutdown event)
+    {
+        names.clear();
     }
 
     @Subscribe
-    public void onGameTick(GameTick event) {
-        Plugin pl = this.pluginManager.getPlugins().stream().filter(x -> x.getName().equals("Socket")).findFirst().get();
-        if (!this.pluginManager.isPluginEnabled(pl))
-            this.names.clear();
-        this.players.clear();
-        for (Player p : this.client.getPlayers()) {
-            if (this.names.contains(p.getName()))
-                this.players.add(p);
+    public void onGameTick(GameTick event)
+    {
+        players.clear();
+        loop: for(Player p : client.getPlayers())
+        {
+            for(String name : names)
+            {
+                if(name.equals(p.getName()))
+                {
+                    players.add(p);
+                    continue loop;
+                }
+            }
         }
     }
 }

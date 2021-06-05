@@ -22,7 +22,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import org.apache.commons.lang3.StringUtils;
 
 @PluginDescriptor(
-        name = "<html><font color=#00ff00>[S] Socket - Planks",
+        name = "Socket - Planks",
         description = "Aint letting these bastards get away with shit",
         tags = {"cox"}
 )

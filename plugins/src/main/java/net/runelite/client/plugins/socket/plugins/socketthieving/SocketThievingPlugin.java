@@ -24,7 +24,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.util.Text;
 
 @PluginDescriptor(
-        name = "<html><font color=#00ff00>[S] Socket - Thieving",
+        name = "Socket - Thieving",
         description = "De0's thieving plugin with the option of Socket! Works without socket too.",
         tags = {"xeric", "thieving", "chambers", "cox", "socket", "de0", "bats", "grubs"}
         )

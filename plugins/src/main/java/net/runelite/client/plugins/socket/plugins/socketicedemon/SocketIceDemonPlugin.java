@@ -24,7 +24,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 
 
 @PluginDescriptor(
-        name = "<html><font color=#00ff00>[S] Socket - Ice Demon",
+        name = "Socket - Ice Demon",
         description = "Socket ice demon",
         tags = {"xeric", "iceDemon", "chambers", "cox", "socket"}
         )

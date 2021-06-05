@@ -28,7 +28,7 @@ import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
-        name = "<html><font color=#00ff00>[S] Socket - Healing",
+        name = "Socket - Healing",
         description = "Displays health overlays for socket party members.",
         enabledByDefault = false
 )

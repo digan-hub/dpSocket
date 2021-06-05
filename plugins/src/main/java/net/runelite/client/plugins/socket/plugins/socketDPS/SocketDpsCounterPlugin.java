@@ -40,7 +40,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@PluginDescriptor(name = "<html><font color=#00ff00>[S] Socket - DPS", description = "Counts damage by a party", enabledByDefault = false)
+@PluginDescriptor(name = "Socket - DPS", description = "Counts damage by a party", enabledByDefault = false)
 @PluginDependency(SocketPlugin.class)
 public class SocketDpsCounterPlugin extends Plugin {
     private static final Logger log = LoggerFactory.getLogger(SocketDpsCounterPlugin.class);

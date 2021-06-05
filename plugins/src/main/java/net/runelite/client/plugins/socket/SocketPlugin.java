@@ -19,10 +19,7 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.socket.hash.AES256;
 import net.runelite.client.plugins.socket.org.json.JSONObject;
-import net.runelite.client.plugins.socket.packet.SocketBroadcastPacket;
-import net.runelite.client.plugins.socket.packet.SocketPlayerJoin;
-import net.runelite.client.plugins.socket.packet.SocketPlayerLeave;
-import net.runelite.client.plugins.socket.packet.SocketReceivePacket;
+import net.runelite.client.plugins.socket.packet.*;
 
 import javax.inject.Inject;
 import java.io.PrintWriter;
@@ -73,7 +70,8 @@ public class SocketPlugin extends Plugin {
     private SocketConnection connection = null;
 
     @Override
-    protected void startUp() {
+    protected void startUp()
+    {
         this.nextConnection = 0L;
 
         eventBus.register(SocketReceivePacket.class);
@@ -81,15 +79,26 @@ public class SocketPlugin extends Plugin {
 
         eventBus.register(SocketPlayerJoin.class);
         eventBus.register(SocketPlayerLeave.class);
+
+        eventBus.register(SocketStartup.class);
+        eventBus.register(SocketShutdown.class);
+
+        eventBus.post(new SocketStartup());
     }
 
     @Override
-    protected void shutDown() {
+    protected void shutDown()
+    {
+        eventBus.post(new SocketShutdown());
+
         eventBus.unregister(SocketReceivePacket.class);
         eventBus.unregister(SocketBroadcastPacket.class);
 
         eventBus.unregister(SocketPlayerJoin.class);
         eventBus.unregister(SocketPlayerLeave.class);
+
+        eventBus.unregister(SocketStartup.class);
+        eventBus.unregister(SocketShutdown.class);
 
         if (this.connection != null)
             this.connection.terminate(true);
@@ -121,18 +130,23 @@ public class SocketPlugin extends Plugin {
     }
 
     @Subscribe
-    public void onGameStateChanged(GameStateChanged event) {
+    public void onGameStateChanged(GameStateChanged event)
+    {
         // Terminate all connections to the socket server when the user logs out.
-        if (event.getGameState() == GameState.LOGIN_SCREEN) {
-            if (this.connection != null) {
+        if (event.getGameState() == GameState.LOGIN_SCREEN)
+        {
+            if (this.connection != null)
+            {
                 this.connection.terminate(false);
             }
         }
     }
 
     @Subscribe
-    public void onSocketBroadcastPacket(SocketBroadcastPacket packet) {
-        try {
+    public void onSocketBroadcastPacket(SocketBroadcastPacket packet)
+    {
+        try
+        {
             // Handles the packets that alternative plugins broadcasts.
             if (this.connection == null || this.connection.getState() != SocketState.CONNECTED)
                 return;
@@ -147,7 +161,8 @@ public class SocketPlugin extends Plugin {
             payload.put("payload", AES256.encrypt(secret, data)); // Payload is now an encrypted string.
 
             PrintWriter outputStream = this.connection.getOutputStream();
-            synchronized (outputStream) {
+            synchronized (outputStream)
+            {
                 outputStream.println(payload.toString());
             }
         } catch (Exception e) { // Oh no, something went wrong!

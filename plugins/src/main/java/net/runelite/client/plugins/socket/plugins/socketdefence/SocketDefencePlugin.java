@@ -22,14 +22,16 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.socket.org.json.JSONArray;
 import net.runelite.client.plugins.socket.org.json.JSONObject;
 import net.runelite.client.plugins.socket.packet.SocketBroadcastPacket;
+import net.runelite.client.plugins.socket.packet.SocketMembersUpdate;
 import net.runelite.client.plugins.socket.packet.SocketReceivePacket;
+import net.runelite.client.plugins.socket.packet.SocketShutdown;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 import net.runelite.client.util.ColorUtil;
 import net.runelite.client.util.Text;
 
 @PluginDescriptor(
-        name = "<html><font color=#00ff00>[S] Socket - Defence",
+        name = "Socket - Defence",
         description = "Shows defence level for different bosses after specs",
         tags = {"socket", "pvm", "cox", "gwd", "corp", "tob"}
         )
@@ -244,26 +246,16 @@ public class SocketDefencePlugin extends Plugin {
         }
     }
 
+    @Subscribe void onSocketMembersUpdate(SocketMembersUpdate event)
+    {
+        socketPlayerNames.clear();
+        socketPlayerNames.addAll(event.getMembers());
+    }
+
     @Subscribe
-    private void onChatMessage(ChatMessage event) {
-        String text = Text.standardize(event.getMessageNode().getValue());
-        if (text.contains("member (") || text.contains("members (")) {
-            text = text.substring(text.indexOf(":") + 1).trim();
-            this.socketPlayerNames.clear();
-            byte b;
-            int i;
-            String[] arrayOfString;
-            for (i = (arrayOfString = text.split(",")).length, b = 0; b < i; ) {
-                String str = arrayOfString[b];
-                str = str.trim();
-                if (!"".equals(str))
-                    this.socketPlayerNames.add(str.toLowerCase());
-                b++;
-            }
-        }
-        if (text.contains("any active socket server connections were closed")) {
-            this.socketPlayerNames.clear();
-        }
+    private void onSocketShutdown(SocketShutdown event)
+    {
+        this.socketPlayerNames.clear();
     }
 
     @Subscribe
