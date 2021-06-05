@@ -1,0 +1,28 @@
+{
+	"artifacts": [
+		
+		{
+			"name": "Socket.jar",
+			"plugins": [
+      "net.runelite.client.plugins.socket.SocketPlugin",
+      "net.runelite.client.plugins.socket.plugins.sChatPlugin",
+      "net.runelite.client.plugins.socket.plugins.DeathIndicatorsPlugin",
+      "net.runelite.client.plugins.socket.plugins.PlayerIndicatorsExtendedPlugin",
+      "net.runelite.client.plugins.socket.plugins.PlayerStatusPlugin",
+      "net.runelite.client.plugins.socket.plugins.SocketBossTimersPlugin",
+      "net.runelite.client.plugins.socket.plugins.SocketDefensePlugin",
+      "net.runelite.client.plugins.socket.plugins.SocketDpsCounterPlugin",
+      "net.runelite.client.plugins.socket.plugins.SocketHealingPlugin",
+      "net.runelite.client.plugins.socket.plugins.SocketIceDemonPlugin",
+      "net.runelite.client.plugins.socket.plugins.SocketPlanksPlugin",
+      "net.runelite.client.plugins.socket.plugins.SocketThievingPlugin",
+      "net.runelite.client.plugins.socket.plugins.SotetsegPlugin",
+      "net.runelite.client.plugins.socket.plugins.SpecialCounterExtendedPlugin"
+      ],
+			"version": "3.0.0",
+			"path": "https://raw.githubusercontent.com/c13-c/Socket/master/release/Socket.jar",
+			"hash": "036da368c3baed0b266050f85e82e6b2d0e1cf0273556a85649ec7fcf5cabd4a",
+			"description": "Allows communication between other players for sotetseg maze, special attacks, and more."
+		}
+	]
+}
