@@ -10,7 +10,7 @@
       "net.runelite.client.plugins.socket.plugins.playerindicatorsextended.PlayerIndicatorsExtendedPlugin",
       "net.runelite.client.plugins.socket.plugins.playerstatus.PlayerStatusPlugin",
       "net.runelite.client.plugins.socket.plugins.socketbosstimer.SocketBossTimersPlugin",
-      "net.runelite.client.plugins.socket.plugins.socketdefence.SocketDefensePlugin",
+      "net.runelite.client.plugins.socket.plugins.socketdefence.SocketDefencePlugin",
       "net.runelite.client.plugins.socket.plugins.socketDPS.SocketDpsCounterPlugin",
       "net.runelite.client.plugins.socket.plugins.sockethealing.SocketHealingPlugin",
       "net.runelite.client.plugins.socket.plugins.socketicedemon.SocketIceDemonPlugin",
