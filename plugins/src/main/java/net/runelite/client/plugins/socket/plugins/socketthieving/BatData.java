@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.socketthieving;
+package net.runelite.client.plugins.socket.plugins.socketthieving;
 
 public class BatData {
     static byte[][] CCW_CHEST_LOCS = new byte[][] {

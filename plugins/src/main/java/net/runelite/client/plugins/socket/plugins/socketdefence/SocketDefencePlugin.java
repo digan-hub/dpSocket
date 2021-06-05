@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.socketdefence;
+package net.runelite.client.plugins.socket.plugins.socketdefence;
 
 import com.google.inject.Provides;
 

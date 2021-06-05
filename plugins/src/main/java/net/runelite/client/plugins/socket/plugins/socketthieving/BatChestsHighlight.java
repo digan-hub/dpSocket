@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.socketthieving;
+package net.runelite.client.plugins.socket.plugins.socketthieving;
 
 import java.awt.Color;
 import java.awt.Dimension;

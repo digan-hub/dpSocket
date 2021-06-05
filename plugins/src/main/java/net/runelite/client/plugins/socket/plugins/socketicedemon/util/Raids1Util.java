@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.socketicedemon.util;
+package net.runelite.client.plugins.socket.plugins.socketicedemon.util;
 
 public class Raids1Util {
     public static final int RAIDS1_ROOM_MASK = 67059680;

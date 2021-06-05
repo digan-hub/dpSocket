@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.socketplanks;
+package net.runelite.client.plugins.socket.plugins.socketplanks;
 
 import com.google.inject.Provides;
 

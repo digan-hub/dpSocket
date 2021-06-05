@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.socketicedemon;
+package net.runelite.client.plugins.socket.plugins.socketicedemon;
 
 import net.runelite.client.config.*;
 

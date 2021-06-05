@@ -1,11 +1,12 @@
-package net.runelite.client.plugins.socketdefence;
+package net.runelite.client.plugins.socket.plugins.socketdefence;
 
 import com.google.common.collect.ImmutableSet;
 import net.runelite.api.Point;
 import net.runelite.api.*;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.client.plugins.ModelOutlineRenderer;
+
+import net.runelite.client.plugins.socket.plugins.ModelOutlineRenderer;
 import net.runelite.client.ui.overlay.*;
 
 import javax.inject.Inject;

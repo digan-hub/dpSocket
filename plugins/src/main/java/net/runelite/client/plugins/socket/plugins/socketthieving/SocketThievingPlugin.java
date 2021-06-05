@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.socketthieving;
+package net.runelite.client.plugins.socket.plugins.socketthieving;
 
 import com.google.inject.Provides;
 
@@ -15,13 +15,11 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.socketthieving.util.Raids1Util;
 import net.runelite.client.plugins.socket.org.json.JSONArray;
 import net.runelite.client.plugins.socket.org.json.JSONObject;
 import net.runelite.client.plugins.socket.packet.SocketBroadcastPacket;
-import net.runelite.client.plugins.socket.packet.SocketPlayerJoin;
-import net.runelite.client.plugins.socket.packet.SocketPlayerLeave;
 import net.runelite.client.plugins.socket.packet.SocketReceivePacket;
+import net.runelite.client.plugins.socket.plugins.socketthieving.util.Raids1Util;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.util.Text;
 

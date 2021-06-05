@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.sockethealing;
+package net.runelite.client.plugins.socket.plugins.sockethealing;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import net.runelite.api.Actor;
 import net.runelite.api.Client;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
-import net.runelite.client.plugins.ModelOutlineRenderer;
+import net.runelite.client.plugins.socket.plugins.ModelOutlineRenderer;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPanel;

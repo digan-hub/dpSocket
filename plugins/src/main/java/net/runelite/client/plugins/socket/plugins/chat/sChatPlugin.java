@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.socket.plugins.schat;
+package net.runelite.client.plugins.socket.plugins.chat;
 
 import com.google.inject.Provides;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,7 @@ import java.awt.event.KeyEvent;
 
 @Slf4j
 @PluginDescriptor(
-        name = "sChat",
+        name = "Socket - Chat",
         description = "Chat over socket",
         tags = {"Socket", "chat"}
 )

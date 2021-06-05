@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.socketthieving.util;
+package net.runelite.client.plugins.socket.plugins.socketthieving.util;
 
 public class Raids1Util {
     public static final int RAIDS1_ROOM_MASK = 67059680;

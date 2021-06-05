@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.socket.plugins.schat;
+package net.runelite.client.plugins.socket.plugins.chat;
 
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;

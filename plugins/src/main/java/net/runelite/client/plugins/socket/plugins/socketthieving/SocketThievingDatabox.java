@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.socketthieving;
+package net.runelite.client.plugins.socket.plugins.socketthieving;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,9 +8,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import net.runelite.api.Client;
-import net.runelite.api.Varbits;
-import net.runelite.client.plugins.socketthieving.util.Raids1Util;
-import net.runelite.client.ui.overlay.Overlay;
+
 import net.runelite.client.ui.overlay.OverlayPanel;
 import net.runelite.client.ui.overlay.components.LayoutableRenderableEntity;
 import net.runelite.client.ui.overlay.components.LineComponent;

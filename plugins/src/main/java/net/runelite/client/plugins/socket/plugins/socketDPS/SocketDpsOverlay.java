@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.socketDPS;
+package net.runelite.client.plugins.socket.plugins.socketDPS;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,8 +9,8 @@ import javax.inject.Inject;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Player;
-import net.runelite.client.plugins.socketDPS.table.SocketTableAlignment;
-import net.runelite.client.plugins.socketDPS.table.SocketTableComponent;
+import net.runelite.client.plugins.socket.plugins.socketDPS.table.SocketTableAlignment;
+import net.runelite.client.plugins.socket.plugins.socketDPS.table.SocketTableComponent;
 import net.runelite.client.ui.overlay.OverlayMenuEntry;
 import net.runelite.client.ui.overlay.OverlayPanel;
 import net.runelite.client.ui.overlay.components.ComponentConstants;
