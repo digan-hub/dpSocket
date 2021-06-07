@@ -1,0 +1,10 @@
+plugins {
+    id "application"
+}
+apply plugin : "java"
+ext {
+    javaMainClass = "JSONBuilder"
+}
+application {
+    mainClassName = javaMainClass
+}
