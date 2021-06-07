@@ -66,6 +66,7 @@ public class SocketDefencePlugin extends Plugin {
     public boolean isInCm = false;
     public ArrayList<String> bossList = new ArrayList<>(Arrays.asList("Corporeal Beast", "General Graardor", "K'ril Tsutsaroth", "Kalphite Queen", "The Maiden of Sugadinti",
             "Xarpus", "Great Olm (Left claw)", "Tekton", "Tekton (enraged)"));
+    public NPC npc = null;
 
     public SocketDefencePlugin() {
     }
@@ -134,6 +135,7 @@ public class SocketDefencePlugin extends Plugin {
                     JSONObject payload = new JSONObject();
                     payload.put("socketdefence", data);
                     this.eventBus.post(new SocketBroadcastPacket(payload));
+                    npc = (NPC)event.getActor();
                 }
             }
         }
@@ -183,7 +185,11 @@ public class SocketDefencePlugin extends Plugin {
                     } else if (bossName.equals("The Maiden of Sugadinti")) {
                         bossDef = 200;
                     } else if (bossName.equals("Xarpus")) {
-                        bossDef = 250;
+                        if (npc.getId() == 10772){
+                            bossDef = 200;
+                        } else {
+                            bossDef = 250;
+                        }
                     } else if (bossName.equals("Great Olm (Left claw)")) {
                         bossDef = 175 * (1 + (.01 * (this.client.getVarbitValue(5424) - 1)));
 

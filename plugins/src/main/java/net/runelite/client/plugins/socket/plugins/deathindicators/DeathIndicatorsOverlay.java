@@ -1,5 +1,4 @@
 package net.runelite.client.plugins.socket.plugins.deathindicators;
-
 import net.runelite.api.NPC;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;

@@ -24,12 +24,9 @@
  */
 package net.runelite.client.plugins.socket.plugins.sotetseg;
 
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.*;
 
 import java.awt.*;
-import java.util.UUID;
 
 @ConfigGroup("Socket Sotetseg Config")
 public interface SotetsegConfig extends Config {
@@ -41,9 +38,10 @@ public interface SotetsegConfig extends Config {
               description = "The color of the tiles."
       )
       default Color getTileColor() {
-            return new Color(0, 0, 0);
+            return Color.GREEN;
       }
 
+      @Range(min = 0, max = 255)
       @ConfigItem(
               position = 1,
               keyName = "getTileTransparency",
@@ -64,6 +62,7 @@ public interface SotetsegConfig extends Config {
             return Color.GREEN;
       }
 
+      @Range(min = 0, max = 5)
       @ConfigItem(
               position = 3,
               keyName = "getTileOutlineSize",
@@ -76,16 +75,6 @@ public interface SotetsegConfig extends Config {
 
       @ConfigItem(
               position = 4,
-              keyName = "getNoOutline",
-              name = "No Outline",
-              description = "Removes outline on tiles for a cleaner appearance."
-      )
-      default boolean getNoOutline() {
-            return true;
-      }
-
-      @ConfigItem(
-              position = 5,
               keyName = "streamerMode",
               name = "Streamer Mode",
               description = "Send Maze Info to team but don't display maze overlay on your screen."
@@ -95,7 +84,7 @@ public interface SotetsegConfig extends Config {
       }
 
       @ConfigItem(
-              position = 6,
+              position = 5,
               keyName = "testOverlay",
               name = "Show Test Tiles",
               description = "Shows test tiles to allow you to change your tile outline settings"

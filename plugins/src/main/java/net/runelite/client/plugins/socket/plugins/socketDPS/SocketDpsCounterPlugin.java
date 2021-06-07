@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 import net.runelite.api.Actor;
@@ -40,7 +39,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@PluginDescriptor(name = "Socket - DPS", description = "Counts damage by a party", enabledByDefault = false)
+@PluginDescriptor(name = "Socket - Damage Counter", description = "Counts damage by a party", enabledByDefault = false)
 @PluginDependency(SocketPlugin.class)
 public class SocketDpsCounterPlugin extends Plugin {
     private static final Logger log = LoggerFactory.getLogger(SocketDpsCounterPlugin.class);

@@ -35,7 +35,6 @@ import net.runelite.client.ui.overlay.OverlayPriority;
 
 import javax.inject.Inject;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -94,19 +93,18 @@ public class SotetsegOverlay extends Overlay {
 
                               if (!this.config.streamerMode())
                               {
-                                    Color color = this.config.getTileOutline();
+                                    int outlineAlpha;
+                                    if (this.config.getTileOutlineSize() > 0){
+                                          outlineAlpha = 255;
+                                    } else {
+                                          outlineAlpha = 0;
+                                    }
+                                    Color color = new Color(this.config.getTileOutline().getRed(),this.config.getTileOutline().getGreen(),this.config.getTileOutline().getBlue(), outlineAlpha);
                                     graphics.setColor(color);
 
                                     Stroke originalStroke = graphics.getStroke();
-                                    int strokeSize = 0;
 
-                                    if (config.getNoOutline())
-                                    {
-                                          strokeSize = 0;
-                                    } else {
-                                          strokeSize = this.config.getTileOutlineSize();
-                                    }
-                                    graphics.setStroke(new BasicStroke(strokeSize));
+                                    graphics.setStroke(new BasicStroke(this.config.getTileOutlineSize()));
                                     graphics.draw(poly);
 
                                     Color fill = this.config.getTileColor();

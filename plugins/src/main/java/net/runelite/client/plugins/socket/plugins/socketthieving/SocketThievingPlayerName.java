@@ -2,8 +2,6 @@ package net.runelite.client.plugins.socket.plugins.socketthieving;
 
 import net.runelite.client.plugins.socket.org.json.JSONObject;
 
-import java.net.Socket;
-
 public class SocketThievingPlayerName {
 
     private String name;

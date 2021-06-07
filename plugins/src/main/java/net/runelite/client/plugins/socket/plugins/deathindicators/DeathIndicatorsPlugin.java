@@ -435,7 +435,7 @@ public class DeathIndicatorsPlugin extends Plugin
                     {
                         if(isDamage)
                         {
-                            damage = (int) (Integer.parseInt(text));
+                            damage = Integer.parseInt(text);
                         }
                         else
                         {
