@@ -425,9 +425,10 @@ public class DeathIndicatorsPlugin extends Plugin
         {
             return;
         }
+        boolean mageWeapon = weaponUsed == 22323 || weaponUsed == 11905 || weaponUsed == 11907 || weaponUsed == 12899 || weaponUsed == 22292 || weaponUsed == 25731;
         if(Arrays.stream(children).skip(1).filter(Objects::nonNull).mapToInt(Widget::getSpriteId).anyMatch(id->id == SpriteID.SKILL_MAGIC))
         {
-            if(weaponUsed == 22323 || weaponUsed == 11905 || weaponUsed == 11907 || weaponUsed == 12899 || weaponUsed == 22292)
+            if(mageWeapon)
             {
                 if(client.getVarbitValue(4696) == 0)
                 {
@@ -472,13 +473,13 @@ public class DeathIndicatorsPlugin extends Plugin
         }
         else if(Arrays.stream(children).skip(1).filter(Objects::nonNull).mapToInt(Widget::getSpriteId).anyMatch(id->id== SpriteID.SKILL_ATTACK || id == SpriteID.SKILL_STRENGTH || id == SpriteID.SKILL_DEFENCE))
         {
-            if(weaponUsed == 22325) //Don't apply if weapon is scythe
+            if(weaponUsed == 22325 || weaponUsed == 25739 || weaponUsed == 25736) //Don't apply if weapon is scythe
             {
                 return;
             }
             if(client.getVarbitValue(4696) == 0) //Separate XP Drops
             {
-                if(weaponUsed == 22323 || weaponUsed == 11905 || weaponUsed == 11907 || weaponUsed == 12899 || weaponUsed == 22292) //Powered Staves
+                if(mageWeapon) //Powered Staves
                 {
                     if(client.getLocalPlayer().getAnimation() == 1979) //Barrage
                     {
