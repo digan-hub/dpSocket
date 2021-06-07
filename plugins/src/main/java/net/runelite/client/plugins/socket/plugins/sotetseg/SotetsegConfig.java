@@ -93,4 +93,14 @@ public interface SotetsegConfig extends Config {
       {
             return false;
       }
+
+      @ConfigItem(
+              position = 6,
+              keyName = "warnBall",
+              name = "Warns if invisible ball is sent",
+              description = "Warns you if the ball was sent while you were chosen since it's invisible otherwise"
+      )
+      default boolean warnBall() { return true;}
+
+
 }
