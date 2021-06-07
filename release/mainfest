@@ -1,27 +1,26 @@
 {
 	"artifacts": [
-		
 		{
-			"name": "Socket.jar",
-			"plugins": [
-      "net.runelite.client.plugins.socket.SocketPlugin",
-      "net.runelite.client.plugins.socket.plugins.chat.sChatPlugin",
-      "net.runelite.client.plugins.socket.plugins.deathindicators.DeathIndicatorsPlugin",
-      "net.runelite.client.plugins.socket.plugins.playerindicatorsextended.PlayerIndicatorsExtendedPlugin",
-      "net.runelite.client.plugins.socket.plugins.playerstatus.PlayerStatusPlugin",
-      "net.runelite.client.plugins.socket.plugins.socketbosstimer.SocketBossTimersPlugin",
-      "net.runelite.client.plugins.socket.plugins.socketdefence.SocketDefencePlugin",
-      "net.runelite.client.plugins.socket.plugins.socketDPS.SocketDpsCounterPlugin",
-      "net.runelite.client.plugins.socket.plugins.sockethealing.SocketHealingPlugin",
-      "net.runelite.client.plugins.socket.plugins.socketicedemon.SocketIceDemonPlugin",
-      "net.runelite.client.plugins.socket.plugins.socketplanks.SocketPlanksPlugin",
-      "net.runelite.client.plugins.socket.plugins.socketthieving.SocketThievingPlugin",
-      "net.runelite.client.plugins.socket.plugins.sotetseg.SotetsegPlugin",
-      "net.runelite.client.plugins.socket.plugins.specialcounterextended.SpecialCounterExtendedPlugin"
-      ],
+			"name":"Socket.jar",
+				"plugins":[
+					"net.runelite.client.plugins.socket.plugins.chat.sChatPlugin",
+					"net.runelite.client.plugins.socket.plugins.deathindicators.DeathIndicatorsPlugin",
+					"net.runelite.client.plugins.socket.plugins.playerindicatorsextended.PlayerIndicatorsExtendedPlugin",
+					"net.runelite.client.plugins.socket.plugins.playerstatus.PlayerStatusPlugin",
+					"net.runelite.client.plugins.socket.plugins.socketbosstimer.SocketBossTimersPlugin",
+					"net.runelite.client.plugins.socket.plugins.socketdefence.SocketDefencePlugin",
+					"net.runelite.client.plugins.socket.plugins.socketDPS.SocketDpsCounterPlugin",
+					"net.runelite.client.plugins.socket.plugins.sockethealing.SocketHealingPlugin",
+					"net.runelite.client.plugins.socket.plugins.socketicedemon.SocketIceDemonPlugin",
+					"net.runelite.client.plugins.socket.plugins.socketplanks.SocketPlanksPlugin",
+					"net.runelite.client.plugins.socket.plugins.socketthieving.SocketThievingPlugin",
+					"net.runelite.client.plugins.socket.plugins.sotetseg.SotetsegPlugin",
+					"net.runelite.client.plugins.socket.plugins.specialcounterextended.SpecialCounterExtendedPlugin",
+					"net.runelite.client.plugins.socket.SocketPlugin"
+				],
 			"version": "3.0.0",
 			"path": "https://raw.githubusercontent.com/c13-c/Socket/master/release/Socket.jar",
-			"hash": "d6a1f55676c19087bab883f1049bbbc9cf02febbfaf8349e216427ba5ac31f00",
+			"hash": "cffca6a5ca472c06503d6dc045cd280f39d3a1664664ecf39b976e21dc80d0cb",
 			"description": "Allows communication between other players for sotetseg maze, special attacks, and more."
 		}
 	]
