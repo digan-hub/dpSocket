@@ -43,7 +43,7 @@ public void onSocketPacketReceivePacket(SocketReceivePacket event)
     if(payload.has("your-key"))
     {
       JSONObject data = payload.getJSONObject("your-key");
-      WorldPoint wp = new WorldPoint(data.getInt("x"), data.getInt("y"), data.getInt("plane));
+      WorldPoint wp = new WorldPoint(data.getInt("x"), data.getInt("y"), data.getInt("plane"));
       String playerName = data.getString("name");
       //Do something with this
     }
