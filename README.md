@@ -13,7 +13,7 @@ SocketShutdown
 SocketStartup
 ```
 
-The events ```SocketShutdown``` and ```SocketStartup``` are new to v3.0.0, and are fired when the plugin startup() and shutdown() are called respectively. Additionally for those who didn't know, ```SocketMemebersUpdate``` was added in v2.0.9.
+The events ```SocketShutdown``` and ```SocketStartup``` are new to v3.0.0, and are fired when the plugin startup() and shutdown() are called respectively. Additionally for those who didn't know, ```SocketMembersUpdate``` was added in v2.0.9.
 
 ## Example Usage
 
