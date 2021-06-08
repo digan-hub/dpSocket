@@ -11,10 +11,7 @@ import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.*;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.events.GameTick;
-import net.runelite.api.events.GroundObjectSpawned;
-import net.runelite.api.events.NpcDespawned;
-import net.runelite.api.events.NpcSpawned;
+import net.runelite.api.events.*;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
@@ -51,6 +48,7 @@ public class SotetsegPlugin extends Plugin {
       private boolean wasInUnderworld;
       private int overworldRegionID;
       private int underworldRegionID;
+      private int ballTick = 0;
 
       @Provides
       SotetsegConfig getConfig(ConfigManager configManager) {
@@ -72,6 +70,21 @@ public class SotetsegPlugin extends Plugin {
       protected void shutDown()
       {
             this.overlayManager.remove(this.overlay);
+      }
+
+
+      @Subscribe
+      public void onProjectileMoved(ProjectileMoved event)
+      {
+            if(event.getProjectile().getId() == 1604)
+            {
+                  if(event.getProjectile().getEndCycle()-event.getProjectile().getStartMovementCycle() == event.getProjectile().getRemainingCycles())
+                  {
+                        JSONObject data = new JSONObject();
+                        data.put("sotetseg-extended-ball", "");
+                        eventBus.post(new SocketBroadcastPacket(data));
+                  }
+            }
       }
 
       @Subscribe
@@ -174,8 +187,20 @@ public class SotetsegPlugin extends Plugin {
       {
             try {
                   JSONObject payload = event.getPayload();
-                  if (!payload.has("sotetseg-extended"))
+                  if (!payload.has("sotetseg-extended") && (!payload.has("sotetseg-extended-ball")))
                   {
+                        return;
+                  }
+                  if(payload.has("sotetseg-extended-ball"))
+                  {
+                        if(client.getLocalPlayer().getWorldLocation().getPlane() == 3 && ballTick != client.getTickCount())
+                        {
+                              ballTick = client.getTickCount();
+                              if(config.warnBall())
+                              {
+                                    client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "<col=ff0000>Ball thrown while in underworld", "");
+                              }
+                        }
                         return;
                   }
                   JSONArray data = payload.getJSONArray("sotetseg-extended");

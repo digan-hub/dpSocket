@@ -130,8 +130,10 @@ public class SocketHealingPlugin extends Plugin {
     }
 
     @Subscribe
-    public void onSocketReceivePacket(SocketReceivePacket event) {
-        try {
+    public void onSocketReceivePacket(SocketReceivePacket event)
+    {
+        try
+        {
             JSONObject payload = event.getPayload();
             String localName = this.client.getLocalPlayer().getName();
             if (payload.has("player-health")) {
@@ -149,7 +151,8 @@ public class SocketHealingPlugin extends Plugin {
                     }
                 }
             }
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
             ex.printStackTrace();
         }
     }

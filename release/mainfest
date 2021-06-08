@@ -16,11 +16,12 @@
 					"net.runelite.client.plugins.socket.plugins.socketthieving.SocketThievingPlugin",
 					"net.runelite.client.plugins.socket.plugins.sotetseg.SotetsegPlugin",
 					"net.runelite.client.plugins.socket.plugins.specialcounterextended.SpecialCounterExtendedPlugin",
+					"net.runelite.client.plugins.socket.plugins.worldhopperextended.WorldHopperExtendedPlugin",
 					"net.runelite.client.plugins.socket.SocketPlugin"
 				],
 			"version": "3.0.0",
 			"path": "https://raw.githubusercontent.com/c13-c/Socket/master/release/Socket.jar",
-			"hash": "cffca6a5ca472c06503d6dc045cd280f39d3a1664664ecf39b976e21dc80d0cb",
+			"hash": "4354fd497d5fe2b9ff715e4c516e6e34a3950c69698b1a8d15b3a8deb181bd1a",
 			"description": "Allows communication between other players for sotetseg maze, special attacks, and more."
 		}
 	]

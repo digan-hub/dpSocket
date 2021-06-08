@@ -425,10 +425,9 @@ public class DeathIndicatorsPlugin extends Plugin
         {
             return;
         }
-        boolean mageWeapon = weaponUsed == 22323 || weaponUsed == 11905 || weaponUsed == 11907 || weaponUsed == 12899 || weaponUsed == 22292 || weaponUsed == 25731;
         if(Arrays.stream(children).skip(1).filter(Objects::nonNull).mapToInt(Widget::getSpriteId).anyMatch(id->id == SpriteID.SKILL_MAGIC))
         {
-            if(mageWeapon)
+            if(weaponUsed == 22323 || weaponUsed == 11905 || weaponUsed == 11907 || weaponUsed == 12899 || weaponUsed == 22292 || weaponUsed == 25731)
             {
                 if(client.getVarbitValue(4696) == 0)
                 {
@@ -479,7 +478,7 @@ public class DeathIndicatorsPlugin extends Plugin
             }
             if(client.getVarbitValue(4696) == 0) //Separate XP Drops
             {
-                if(mageWeapon) //Powered Staves
+                if(weaponUsed == 22323 || weaponUsed == 11905 || weaponUsed == 11907 || weaponUsed == 12899 || weaponUsed == 22292 || weaponUsed == 25731) //Powered Staves
                 {
                     if(client.getLocalPlayer().getAnimation() == 1979) //Barrage
                     {
