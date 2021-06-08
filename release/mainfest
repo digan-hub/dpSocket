@@ -21,7 +21,7 @@
 				],
 			"version": "3.0.0",
 			"path": "https://raw.githubusercontent.com/c13-c/Socket/master/release/Socket.jar",
-			"hash": "4354fd497d5fe2b9ff715e4c516e6e34a3950c69698b1a8d15b3a8deb181bd1a",
+			"hash": "edf2f1046f7f4e88e4aabe389277d3798b96ccab4716622f86ce0d86629c6bdb",
 			"description": "Allows communication between other players for sotetseg maze, special attacks, and more."
 		}
 	]
