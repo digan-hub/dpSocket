@@ -1,3 +1,4 @@
+
 package net.runelite.client.plugins.socket.plugins.worldhopperextended;
 
 import java.awt.Color;
@@ -36,7 +37,7 @@ class WorldHopperExtendedPingOverlay extends Overlay {
     }
 
     public Dimension render(Graphics2D graphics) {
-        if (!this.worldHopperConfig.displayPing())
+        if (!this.worldHopperConfig.displayCurrentPing())
             return null;
         int ping = this.worldHopperPlugin.getCurrentPing();
         if (ping < 0)

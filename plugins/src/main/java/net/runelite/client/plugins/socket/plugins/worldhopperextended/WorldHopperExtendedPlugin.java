@@ -220,8 +220,8 @@ public class WorldHopperExtendedPlugin extends Plugin {
         }
         this
 
-                .navButton = NavigationButton.builder().tooltip("World Switcher").icon(icon).priority(3).panel(this.panel).build();
-        if (this.config.showSidebar())
+                .navButton = NavigationButton.builder().tooltip("Socket - World Switcher").icon(icon).priority(3).panel(this.panel).build();
+        if (this.config.showWorldHopperSidebar())
             this.clientToolbar.addNavigation(this.navButton);
         this.overlayManager.add(this.worldHopperOverlay);
         this.panel.setFilterMode(this.config.subscriptionFilter());
@@ -282,14 +282,14 @@ public class WorldHopperExtendedPlugin extends Plugin {
             JSONObject payload;
             switch (event.getKey()) {
                 case "showSidebar":
-                    if (this.config.showSidebar()) {
+                    if (this.config.showWorldHopperSidebar()) {
                         this.clientToolbar.addNavigation(this.navButton);
                         break;
                     }
                     this.clientToolbar.removeNavigation(this.navButton);
                     break;
                 case "ping":
-                    if (this.config.ping()) {
+                    if (this.config.worldPing()) {
                         SwingUtilities.invokeLater(() -> this.panel.showPing());
                         break;
                     }
@@ -464,7 +464,7 @@ public class WorldHopperExtendedPlugin extends Plugin {
 
     @Subscribe
     public void onGameStateChanged(GameStateChanged gameStateChanged) {
-        if (this.config.showSidebar() && gameStateChanged.getGameState() == GameState.LOGGED_IN)
+        if (this.config.showWorldHopperSidebar() && gameStateChanged.getGameState() == GameState.LOGGED_IN)
             if (this.lastWorld != this.client.getWorld()) {
                 int newWorld = this.client.getWorld();
                 this.panel.switchCurrentHighlight(newWorld, this.lastWorld);
@@ -474,7 +474,7 @@ public class WorldHopperExtendedPlugin extends Plugin {
 
     @Subscribe
     public void onWorldListLoad(WorldListLoad worldListLoad) {
-        if (!this.config.showSidebar())
+        if (!this.config.showWorldHopperSidebar())
             return;
         Map<Integer, Integer> worldData = new HashMap<>();
         for (net.runelite.api.World w : worldListLoad.getWorlds())
@@ -752,7 +752,7 @@ public class WorldHopperExtendedPlugin extends Plugin {
 
     private void pingInitialWorlds() {
         WorldResult worldResult = this.worldService.getWorlds();
-        if (worldResult == null || !this.config.showSidebar() || !this.config.ping())
+        if (worldResult == null || !this.config.showWorldHopperSidebar() || !this.config.worldPing())
             return;
         Stopwatch stopwatch = Stopwatch.createStarted();
         for (World world : worldResult.getWorlds()) {
@@ -764,7 +764,7 @@ public class WorldHopperExtendedPlugin extends Plugin {
     }
 
     private void pingNextWorld() {
-        if (this.worldResult == null || !this.config.showSidebar() || !this.config.ping())
+        if (this.worldResult == null || !this.config.showWorldHopperSidebar() || !this.config.worldPing())
             return;
         List<World> worlds = this.worldResult.getWorlds();
         if (worlds.isEmpty())
@@ -772,7 +772,7 @@ public class WorldHopperExtendedPlugin extends Plugin {
         if (this.currentWorld >= worlds.size())
             this.currentWorld = 0;
         World world = worlds.get(this.currentWorld++);
-        boolean displayPing = (this.config.displayPing() && this.client.getGameState() == GameState.LOGGED_IN);
+        boolean displayPing = (this.config.displayCurrentPing() && this.client.getGameState() == GameState.LOGGED_IN);
         if (displayPing && this.client.getWorld() == world.getId())
             return;
         int ping = Ping.ping(world);
@@ -781,7 +781,7 @@ public class WorldHopperExtendedPlugin extends Plugin {
     }
 
     private void pingCurrentWorld() {
-        if (this.worldResult == null || !this.config.displayPing() || this.client.getGameState() != GameState.LOGGED_IN)
+        if (this.worldResult == null || !this.config.displayCurrentPing() || this.client.getGameState() != GameState.LOGGED_IN)
             return;
         World currentWorld = this.worldResult.findWorld(this.client.getWorld());
         if (currentWorld == null) {
@@ -794,7 +794,7 @@ public class WorldHopperExtendedPlugin extends Plugin {
     }
 
     Integer getStoredPing(World world) {
-        if (!this.config.ping())
+        if (!this.config.worldPing())
             return null;
         return this.storedPings.get(world.getId());
     }

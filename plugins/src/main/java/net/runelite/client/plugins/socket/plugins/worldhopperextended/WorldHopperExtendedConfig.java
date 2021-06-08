@@ -56,7 +56,7 @@ public interface WorldHopperExtendedConfig extends Config {
             description = "Show sidebar containing all worlds that mimics in-game interface",
             position = 3
     )
-    default boolean showSidebar() {
+    default boolean showWorldHopperSidebar() {
         return true;
     }
 
@@ -66,7 +66,7 @@ public interface WorldHopperExtendedConfig extends Config {
             description = "Shows ping to each game world",
             position = 4
     )
-    default boolean ping() {
+    default boolean worldPing() {
         return true;
     }
 
@@ -87,7 +87,7 @@ public interface WorldHopperExtendedConfig extends Config {
             position = 6
     )
     default boolean menuOption() {
-        return true;
+        return false;
     }
 
     @ConfigItem(
@@ -114,7 +114,7 @@ public interface WorldHopperExtendedConfig extends Config {
             description = "Displays ping to current game world",
             position = 8
     )
-    default boolean displayPing() {
+    default boolean displayCurrentPing() {
         return false;
     }
 

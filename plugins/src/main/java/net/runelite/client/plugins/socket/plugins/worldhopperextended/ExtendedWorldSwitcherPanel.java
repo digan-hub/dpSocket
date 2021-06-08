@@ -81,9 +81,9 @@ class ExtendedWorldSwitcherPanel extends PluginPanel {
     void updateListData(Map<Integer, Integer> worldData) {
         for (ExtendedWorldTableRow worldTableRow : this.rows) {
             World world = worldTableRow.getWorld();
-            Integer playerCount = worldData.get(Integer.valueOf(world.getId()));
+            Integer playerCount = worldData.get(world.getId());
             if (playerCount != null)
-                worldTableRow.updatePlayerCount(playerCount.intValue());
+                worldTableRow.updatePlayerCount(playerCount);
         }
         if (this.orderIndex == WorldOrder.PLAYERS)
             updateList();
@@ -275,7 +275,7 @@ class ExtendedWorldSwitcherPanel extends PluginPanel {
 
     private ExtendedWorldTableRow buildRow(World world, boolean stripe, boolean current, boolean favorite) {
         ExtendedWorldTableRow row = new ExtendedWorldTableRow(world, current, favorite, this.plugin.getStoredPing(world), world1 -> this.plugin.hopTo(world1), (world12, add) -> {
-            if (add.booleanValue()) {
+            if (add) {
                 this.plugin.addToFavorites(world12);
             } else {
                 this.plugin.removeFromFavorites(world12);
