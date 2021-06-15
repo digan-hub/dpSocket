@@ -63,7 +63,7 @@ import static net.runelite.client.plugins.socket.plugins.playerstatus.gametimer.
         name = "Socket - Player Status",
         description = "Socket extension for displaying player status to members in your party.",
         tags = {"socket", "server", "discord", "connection", "broadcast", "player", "status", "venge", "vengeance"},
-        enabledByDefault = true
+        enabledByDefault = false
 )
 @Slf4j
 public class PlayerStatusPlugin extends Plugin {
