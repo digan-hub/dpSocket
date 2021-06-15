@@ -26,8 +26,9 @@ import net.runelite.client.ui.overlay.OverlayManager;
 @PluginDescriptor(
         name = "Socket - Ice Demon",
         description = "Socket ice demon",
-        tags = {"xeric", "iceDemon", "chambers", "cox", "socket"}
-        )
+        tags = {"xeric", "iceDemon", "chambers", "cox", "socket"},
+	enabledByDefault = false
+)
 public class SocketIceDemonPlugin extends Plugin {
     @Inject
     private Client client;
