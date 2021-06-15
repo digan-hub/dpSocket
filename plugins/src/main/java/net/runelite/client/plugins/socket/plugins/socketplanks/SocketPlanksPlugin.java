@@ -24,7 +24,8 @@ import org.apache.commons.lang3.StringUtils;
 @PluginDescriptor(
         name = "Socket - Planks",
         description = "Aint letting these bastards get away with shit",
-        tags = {"cox"}
+        tags = {"cox"},
+	enabledByDefault = false
 )
 public class SocketPlanksPlugin extends Plugin {
     @Inject
