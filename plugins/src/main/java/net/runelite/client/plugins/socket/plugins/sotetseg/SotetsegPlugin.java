@@ -27,7 +27,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
       name = "Socket - Sotetseg",
       description = "Extended plugin handler for Sotetseg in the Theatre of Blood.",
       tags = {"socket", "server", "discord", "connection", "broadcast", "sotetseg", "theatre", "tob"},
-      enabledByDefault = true
+      enabledByDefault = false
 )
 public class SotetsegPlugin extends Plugin {
       @Inject
