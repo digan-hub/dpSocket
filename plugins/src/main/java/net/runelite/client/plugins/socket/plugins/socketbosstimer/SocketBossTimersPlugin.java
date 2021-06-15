@@ -27,7 +27,12 @@ import net.runelite.client.util.ColorUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@PluginDescriptor(name = "Socket - Boss Timers", description = "Show boss spawn timer overlays. Zhuri made the multiple worlds possible. I just made it socket.", tags = {"combat", "pve", "overlay", "spawn"})
+@PluginDescriptor(
+	name = "Socket - Boss Timers",
+	description = "Show boss spawn timer overlays. Zhuri made the multiple worlds possible. I just made it socket.",
+	tags = {"combat", "pve", "overlay", "spawn"},
+	enabledByDefault = false
+)
 public class SocketBossTimersPlugin extends Plugin {
 	private static final Logger log = LoggerFactory.getLogger(SocketBossTimersPlugin.class);
 
