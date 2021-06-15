@@ -79,7 +79,11 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@PluginDescriptor(name = "Socket - World Hopper", description = "Allows you to quickly hop worlds")
+@PluginDescriptor(
+        name = "Socket - World Hopper",
+        description = "Allows you to quickly hop worlds",
+        enabledByDefault = false
+)
 public class WorldHopperExtendedPlugin extends Plugin {
     private static final Logger log = LoggerFactory.getLogger(WorldHopperExtendedPlugin.class);
 
