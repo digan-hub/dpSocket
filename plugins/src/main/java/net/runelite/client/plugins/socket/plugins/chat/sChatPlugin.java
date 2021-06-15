@@ -30,7 +30,8 @@ import java.awt.event.KeyEvent;
 @PluginDescriptor(
         name = "Socket - Chat",
         description = "Chat over socket",
-        tags = {"Socket", "chat"}
+        tags = {"Socket", "chat"},
+        enabledByDefault = false
 )
 public class sChatPlugin extends Plugin implements KeyListener
 {
