@@ -26,8 +26,9 @@ import net.runelite.client.util.Text;
 @PluginDescriptor(
         name = "Socket - Thieving",
         description = "De0's thieving plugin with the option of Socket! Works without socket too.",
-        tags = {"xeric", "thieving", "chambers", "cox", "socket", "de0", "bats", "grubs"}
-        )
+        tags = {"xeric", "thieving", "chambers", "cox", "socket", "de0", "bats", "grubs"},
+        enabledByDefault = false
+)
 public class SocketThievingPlugin extends Plugin {
     @Inject
     private Client client;
