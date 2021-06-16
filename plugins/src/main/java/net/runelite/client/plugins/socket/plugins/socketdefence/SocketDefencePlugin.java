@@ -33,8 +33,9 @@ import net.runelite.client.util.Text;
 @PluginDescriptor(
         name = "Socket - Defence",
         description = "Shows defence level for different bosses after specs",
-        tags = {"socket", "pvm", "cox", "gwd", "corp", "tob"}
-        )
+        tags = {"socket", "pvm", "cox", "gwd", "corp", "tob"},
+        enabledByDefault = false
+)
 public class SocketDefencePlugin extends Plugin {
     @Inject
     private Client client;

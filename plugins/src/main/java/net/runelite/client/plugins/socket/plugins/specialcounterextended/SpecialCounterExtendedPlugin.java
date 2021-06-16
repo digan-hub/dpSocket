@@ -52,7 +52,7 @@ import java.util.Set;
         name = "Socket - Special Attack Counter",
         description = "Track DWH, Arclight, Darklight, and BGS special attacks used on NPCs using server sockets.",
         tags = {"socket", "server", "discord", "connection", "broadcast", "combat", "npcs", "overlay"},
-        enabledByDefault = true
+        enabledByDefault = false
 )
 @Slf4j
 public class SpecialCounterExtendedPlugin extends Plugin {

@@ -37,7 +37,8 @@ import static net.runelite.api.widgets.WidgetInfo.TO_GROUP;
 @PluginDescriptor(
         name = "Socket - Death Indicators",
         description = "Shows you NPCs that have been killed",
-        tags = {"Socket, death, kill"}
+        tags = {"Socket, death, kill"},
+        enabledByDefault = false
 )
 public class DeathIndicatorsPlugin extends Plugin
 {

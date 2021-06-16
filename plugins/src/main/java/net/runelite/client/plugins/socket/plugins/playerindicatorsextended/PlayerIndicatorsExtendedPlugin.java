@@ -20,7 +20,12 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@PluginDescriptor(name = "Socket - Player Indicator", description = "Shows you players who are in your socket", tags = {"indicator, socket, player, highlight"})
+@PluginDescriptor(
+        name = "Socket - Player Indicator",
+        description = "Shows you players who are in your socket",
+        tags = {"indicator, socket, player, highlight"},
+        enabledByDefault = false
+)
 public class PlayerIndicatorsExtendedPlugin extends Plugin {
     private static final Logger log = LoggerFactory.getLogger(PlayerIndicatorsExtendedPlugin.class);
 

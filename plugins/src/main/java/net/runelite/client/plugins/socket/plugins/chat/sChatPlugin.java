@@ -30,7 +30,8 @@ import java.awt.event.KeyEvent;
 @PluginDescriptor(
         name = "Socket - Chat",
         description = "Chat over socket",
-        tags = {"Socket", "chat"}
+        tags = {"Socket", "chat"},
+        enabledByDefault = false
 )
 public class sChatPlugin extends Plugin implements KeyListener
 {
@@ -115,14 +116,14 @@ public class sChatPlugin extends Plugin implements KeyListener
         }
         if(typing)
         {
-            if(!chatbox.getText().startsWith("[TEAM] "))
+            if(!chatbox.getText().startsWith("[SOCKET CHAT] "))
             {
-                chatbox.setText("[TEAM] " + chatbox.getText());
+                chatbox.setText("[SOCKET CHAT] " + chatbox.getText());
             }
         }
         else
         {
-            if(chatbox.getText().startsWith("[TEAM] "))
+            if(chatbox.getText().startsWith("[SOCKET CHAT] "))
             {
                 chatbox.setText(chatbox.getText().substring(6));
             }
@@ -130,7 +131,7 @@ public class sChatPlugin extends Plugin implements KeyListener
         if(config.overrideTradeButton())
         {
             Widget tradeButton = client.getWidget(162,27);
-            tradeButton.setText("Team");
+            tradeButton.setText("Socket");
         }
         else
         {
@@ -213,7 +214,7 @@ public class sChatPlugin extends Plugin implements KeyListener
             {
                 cmt = ChatMessageType.GAMEMESSAGE;
             }
-            this.client.addChatMessage(cmt, "", "[TEAM] " + sender + ": " + ColorUtil.prependColorTag( msg, config.messageColor()), null, false);
+            this.client.addChatMessage(cmt, "", "[SOCKET CHAT] " + sender + ": " + ColorUtil.prependColorTag( msg, config.messageColor()), null, false);
         } catch (Exception e) {
             e.printStackTrace();
         }
