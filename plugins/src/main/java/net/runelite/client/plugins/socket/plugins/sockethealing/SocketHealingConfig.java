@@ -70,35 +70,37 @@ public interface SocketHealingConfig extends Config {
         return 255;
     }
 
-    @ConfigItem(position = 13, keyName = "highlightHull", name = "Highlight Hull", description = "Configures whether or not selected players should be highlighted by hull")
+    @Range(max = 5, min = 1)
+    @ConfigItem(position = 13, keyName = "hpThiCC", name = "Highlight Width", description = "Sets the width for the highlight styles. (Max 5, Min 1)")
+    default int hpThiCC() {
+        return 2;
+    }
+
+    @ConfigItem(position = 14, keyName = "highlightHull", name = "Highlight Hull", description = "Configures whether or not selected players should be highlighted by hull")
     default boolean highlightHull() {
         return true;
     }
 
-    @ConfigItem(position = 14, keyName = "highlightOutline", name = "Highlight Outline", description = "Configures whether or not selected players outlines should be highlighted")
+    @ConfigItem(position = 15, keyName = "highlightOutline", name = "Highlight Outline", description = "Configures whether or not selected players outlines should be highlighted")
     default boolean highlightOutline() {
         return false;
     }
 
-    @ConfigItem(position = 15, keyName = "displayHealth", name = "Display Health On All Players*", description = "Turns off the hp displayed. Will still allow you to highlight custom players.")
+    @Range(max = 4, min = 0)
+    @ConfigItem(position = 16, keyName = "glow", name = "Outline Glow", description = "Sets the glow for the outline highlight style. (Max 4, Min 0)")
+    default int glow() {
+        return 4;
+    }
+
+    @ConfigItem(position = 17, keyName = "displayHealth", name = "Display Health On All Players*", description = "Turns off the hp displayed. Will still allow you to highlight custom players.")
     default boolean displayHealth() {
         return true;
     }
 
-    @ConfigItem(
-            position = 16,
-            keyName = "highlightPlayerNames",
-            name = "Highlighted Player Names",
-            description = "Names listed here will be added to hull highlight list"
-    )
+    @ConfigItem(position = 18, keyName = "highlightPlayerNames", name = "Highlighted Player Names", description = "Names listed here will be added to hull highlight list")
     default String highlightedPlayerNames() { return ""; }
 
-    @ConfigItem(
-            position = 17,
-            keyName = "hpPlayerNames",
-            name = "Display Health On Players",
-            description = "Names listed here will be added to the display hp list"
-    )
+    @ConfigItem(position = 19, keyName = "hpPlayerNames", name = "Display Health On Players", description = "Names listed here will be added to the display hp list")
     default String hpPlayerNames() { return ""; }
 
     public enum SocketFontType {

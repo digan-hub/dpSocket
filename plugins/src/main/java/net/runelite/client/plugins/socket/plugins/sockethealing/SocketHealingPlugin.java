@@ -29,7 +29,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
         name = "Socket - Healing",
-        description = "Displays health overlays for socket party members.",
+        description = "Displays health overlays for socket party members. <br> Created by: A wild animal with a keyboard <br> Modified by: SpoonLite",
         enabledByDefault = false
 )
 @PluginDependency(SocketPlugin.class)
@@ -130,10 +130,8 @@ public class SocketHealingPlugin extends Plugin {
     }
 
     @Subscribe
-    public void onSocketReceivePacket(SocketReceivePacket event)
-    {
-        try
-        {
+    public void onSocketReceivePacket(SocketReceivePacket event) {
+        try {
             JSONObject payload = event.getPayload();
             String localName = this.client.getLocalPlayer().getName();
             if (payload.has("player-health")) {
@@ -151,8 +149,7 @@ public class SocketHealingPlugin extends Plugin {
                     }
                 }
             }
-        } catch (Exception ex)
-        {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

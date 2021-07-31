@@ -11,13 +11,13 @@ import net.runelite.api.Actor;
 import net.runelite.api.Client;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
-import net.runelite.client.plugins.socket.plugins.ModelOutlineRenderer;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPanel;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayPriority;
 import net.runelite.client.ui.overlay.OverlayUtil;
+import net.runelite.client.ui.overlay.outline.ModelOutlineRenderer;
 
 public class SocketHealingOverlay extends OverlayPanel {
     private final Client client;
@@ -92,9 +92,16 @@ public class SocketHealingOverlay extends OverlayPanel {
                         for (Player playerIndex : playerList) {
                             if(playerName.toLowerCase().equals(playerIndex.getName().toLowerCase())) {
                                 if(config.highlightOutline()){
-                                    this.modelOutlineRenderer.drawOutline((Actor)playerIndex, 2, highlightColor);
+                                    this.modelOutlineRenderer.drawOutline(playerIndex, config.hpThiCC(), highlightColor, config.glow());
                                 }else if(config.highlightHull()){
-                                    OverlayUtil.renderPolygon(graphics, playerIndex.getConvexHull(), highlightColor);
+                                    Shape poly = playerIndex.getConvexHull();
+                                    if (poly != null) {
+                                        graphics.setColor(new Color(highlightColor.getRed(), highlightColor.getGreen(), highlightColor.getBlue(), config.opacity()));
+                                        graphics.setStroke(new BasicStroke(this.config.hpThiCC()));
+                                        graphics.draw(poly);
+                                        graphics.setColor(new Color(highlightColor.getRed(), highlightColor.getGreen(), highlightColor.getBlue(), 0));
+                                        graphics.fill(poly);
+                                    }
                                 }
                             }
                         }

@@ -1,10 +1,8 @@
 package net.runelite.client.plugins.socket.plugins.socketdefence;
 
 import com.google.common.collect.ImmutableSet;
-import net.runelite.api.Point;
 import net.runelite.api.*;
 import net.runelite.api.coords.LocalPoint;
-import net.runelite.api.coords.WorldPoint;
 
 import net.runelite.client.plugins.socket.plugins.ModelOutlineRenderer;
 import net.runelite.client.ui.overlay.*;
@@ -12,7 +10,6 @@ import net.runelite.client.ui.overlay.*;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.*;
-import java.util.Objects;
 import java.util.Set;
 
 @Singleton
@@ -37,8 +34,7 @@ public class SocketDefenceOverlay extends OverlayPanel
     }
 
     @Override
-    public Dimension render(Graphics2D graphics)
-    {
+    public Dimension render(Graphics2D graphics){
         if (config.corpChally() != SocketDefenceConfig.CorpTileMode.OFF) {
             for (NPC npc : this.client.getNpcs()) {
                 if(npc.getName() != null && npc.getName().toLowerCase().equals("corporeal beast")) {
@@ -47,28 +43,24 @@ public class SocketDefenceOverlay extends OverlayPanel
                     if (plugin.bossDef >= 0 && plugin.bossDef <= 10) {
                         color = Color.GREEN;
                     }
+                    
                     if (config.corpChally() == SocketDefenceConfig.CorpTileMode.AREA) {
                         renderAreaOverlay(graphics, npc, color);
-                        continue;
-                    }
-                    if (this.config.corpChally() == SocketDefenceConfig.CorpTileMode.TILE) {
+                    }else if (this.config.corpChally() == SocketDefenceConfig.CorpTileMode.TILE) {
                         NPCComposition npcComp = npc.getComposition();
                         int size = npcComp.getSize();
                         LocalPoint lp = npc.getLocalLocation();
                         Polygon tilePoly = Perspective.getCanvasTileAreaPoly(this.client, lp, size);
                         renderPoly(graphics, color, tilePoly);
                         continue;
-                    }
-                    if (this.config.corpChally() == SocketDefenceConfig.CorpTileMode.HULL) {
+                    }else if (this.config.corpChally() == SocketDefenceConfig.CorpTileMode.HULL) {
                         Shape objectClickbox = npc.getConvexHull();
                         if (objectClickbox != null) {
                             graphics.setStroke(new BasicStroke(config.corpChallyThicc()));
                             graphics.setColor(color);
                             graphics.draw(objectClickbox);
                         }
-                        continue;
-                    }
-                    if (this.config.corpChally() == SocketDefenceConfig.CorpTileMode.TRUE_LOCATION) {
+                    }else if (this.config.corpChally() == SocketDefenceConfig.CorpTileMode.TRUE_LOCATION) {
                         int size = 1;
                         NPCComposition composition = npc.getTransformedComposition();
                         if (composition != null)
@@ -79,9 +71,7 @@ public class SocketDefenceOverlay extends OverlayPanel
                             Polygon tilePoly = Perspective.getCanvasTileAreaPoly(this.client, lp, size);
                             renderPoly(graphics, color, tilePoly);
                         }
-                        continue;
-                    }
-                    if (this.config.corpChally() == SocketDefenceConfig.CorpTileMode.OUTLINE)
+                    }else if (this.config.corpChally() == SocketDefenceConfig.CorpTileMode.OUTLINE)
                         this.modelOutlineRenderer.drawOutline((Actor) npc, 2, color);
                 }
             }

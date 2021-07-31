@@ -125,7 +125,7 @@ public class sChatPlugin extends Plugin implements KeyListener
         {
             if(chatbox.getText().startsWith("[SOCKET CHAT] "))
             {
-                chatbox.setText(chatbox.getText().substring(6));
+                chatbox.setText(chatbox.getText().substring(13));
             }
         }
         if(config.overrideTradeButton())
@@ -139,7 +139,7 @@ public class sChatPlugin extends Plugin implements KeyListener
             tradeButton.setText("Trade");
         }
     }
- //var client int 41 == 5
+    //var client int 41 == 5
     //162.31 trade
     @Override
     public void keyPressed(KeyEvent e)

@@ -12,14 +12,6 @@ public interface SocketDefenceConfig extends Config{
     )
     public static final String corpSection = "corp";
 
-   /* @ConfigSection(
-            name = "<html><font color=#00aeef>Cox",
-            description = "Cox settings",
-            position = 0,
-            closedByDefault = true
-    )
-    public static final String coxSection = "cox";*/
-
     @Range(max = 50, min = 2)
     @ConfigItem(
             name = "Low Defence Threshold",
@@ -35,13 +27,23 @@ public interface SocketDefenceConfig extends Config{
             keyName = "cm",
             name = "Challenge Mode",
             description = "Toggle this to set the defence to Challenge Mode when doing Cox",
-            position = 1//,
-            //section = coxSection
+            position = 1
     )
     default boolean cm() {
         return true;
     }
 
+    @ConfigItem(
+            keyName = "vulnerability",
+            name = "Show Vulnerability",
+            description = "Displays an infobox when you successfully land vulnerability",
+            position = 1
+    )
+    default boolean vulnerability() {
+        return true;
+    }
+
+    //Corp Section
     @ConfigItem(
             keyName = "corpChally",
             name = "Corp Chally Highlight",
@@ -75,6 +77,18 @@ public interface SocketDefenceConfig extends Config{
     )
     default int corpChallyThicc() {
         return 2;
+    }
+
+    @Range(min = 0, max = 4)
+    @ConfigItem(
+            keyName = "corpGlow",
+            name = "Corp Chally Glow",
+            description = "Adjusts glow of Corp Chally Outline Highlight",
+            position = 3,
+            section = corpSection
+    )
+    default int corpGlow() {
+        return 4;
     }
 
     public enum CorpTileMode {
