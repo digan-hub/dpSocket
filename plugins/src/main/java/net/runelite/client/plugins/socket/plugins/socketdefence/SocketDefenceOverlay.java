@@ -4,8 +4,8 @@ import com.google.common.collect.ImmutableSet;
 import net.runelite.api.*;
 import net.runelite.api.coords.LocalPoint;
 
-import net.runelite.client.plugins.socket.plugins.ModelOutlineRenderer;
 import net.runelite.client.ui.overlay.*;
+import net.runelite.client.ui.overlay.outline.ModelOutlineRenderer;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -72,7 +72,7 @@ public class SocketDefenceOverlay extends OverlayPanel
                             renderPoly(graphics, color, tilePoly);
                         }
                     }else if (this.config.corpChally() == SocketDefenceConfig.CorpTileMode.OUTLINE)
-                        this.modelOutlineRenderer.drawOutline((Actor) npc, 2, color);
+                        this.modelOutlineRenderer.drawOutline(npc, config.corpChallyThicc(), color, config.corpGlow());
                 }
             }
         }
