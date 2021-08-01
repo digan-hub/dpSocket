@@ -116,13 +116,14 @@ public class SocketDefencePlugin extends Plugin {
     @Subscribe
     public void onHitsplatApplied(HitsplatApplied event) {
         if (!specWep.equals("") && event.getHitsplat().isMine() && event.getActor() instanceof NPC && event.getActor() != null && event.getActor().getName() != null && bossList.contains(event.getActor().getName())) {
+            String name;
             if(event.getActor().getName().contains("Tekton")){
-                boss = "Tekton";
+                name = "Tekton";
             }else{
-                boss = event.getActor().getName();
+                name = event.getActor().getName();
             }
             JSONObject data = new JSONObject();
-            data.put("boss", boss);
+            data.put("boss", name);
             data.put("weapon", specWep);
             data.put("hit", event.getHitsplat().getAmount());
             JSONObject payload = new JSONObject();
@@ -171,7 +172,7 @@ public class SocketDefencePlugin extends Plugin {
                     return;
                 }
 
-                if (boss.equals("") || bossDef == -1 || !boss.equals(bossName) || !box.getTooltip().equals(boss)) {
+                if (boss.equals("") || bossDef == -1 || !boss.equals(bossName)) {
                     if (bossName.equals("Corporeal Beast")) {
                         bossDef = 310;
                     } else if (bossName.equals("General Graardor")) {
