@@ -24,10 +24,10 @@ import net.runelite.client.plugins.socket.packet.SocketReceivePacket;
 import net.runelite.client.ui.overlay.OverlayManager;
 @Slf4j
 @PluginDescriptor(
-      name = "Socket - Sotetseg",
-      description = "Extended plugin handler for Sotetseg in the Theatre of Blood.",
-      tags = {"socket", "server", "discord", "connection", "broadcast", "sotetseg", "theatre", "tob"},
-      enabledByDefault = false
+        name = "Socket - Sotetseg",
+        description = "Extended plugin handler for Sotetseg in the Theatre of Blood.",
+        tags = {"socket", "server", "discord", "connection", "broadcast", "sotetseg", "theatre", "tob"},
+        enabledByDefault = true
 )
 public class SotetsegPlugin extends Plugin {
       @Inject
@@ -40,10 +40,12 @@ public class SotetsegPlugin extends Plugin {
       private SotetsegConfig config;
       @Inject
       private SotetsegOverlay overlay;
+      @Inject
+      private MazeTrueTileOverlay mazeOverlay;
       private boolean sotetsegActive;
       private NPC sotetsegNPC;
-      private LinkedHashSet<Point> redTiles;
-      private Set<WorldPoint> mazePings;
+      public LinkedHashSet<Point> redTiles;
+      public Set<WorldPoint> mazePings;
       private int dispatchCount;
       private boolean wasInUnderworld;
       private int overworldRegionID;
@@ -65,11 +67,12 @@ public class SotetsegPlugin extends Plugin {
             this.overworldRegionID = -1;
             this.underworldRegionID = -1;
             this.overlayManager.add(this.overlay);
+            this.overlayManager.add(mazeOverlay);
       }
 
-      protected void shutDown()
-      {
+      protected void shutDown() {
             this.overlayManager.remove(this.overlay);
+            this.overlayManager.remove(this.mazeOverlay);
       }
 
 
@@ -101,7 +104,7 @@ public class SotetsegPlugin extends Plugin {
                   case 10865:
                         this.sotetsegActive = true;
                         this.sotetsegNPC = npc;
-            default:
+                  default:
             }
       }
 
@@ -116,12 +119,12 @@ public class SotetsegPlugin extends Plugin {
                   case 10868:
                   case 10864:
                   case 10865:
-                  if (this.client.getPlane() != 3)
-                  {
-                        this.sotetsegActive = false;
-                        this.sotetsegNPC = null;
-                  }
-            default:
+                        if (this.client.getPlane() != 3)
+                        {
+                              this.sotetsegActive = false;
+                              this.sotetsegNPC = null;
+                        }
+                  default:
             }
       }
 
@@ -273,7 +276,7 @@ public class SotetsegPlugin extends Plugin {
 
       private WorldPoint translateUnderWorldPoint(Point mazePoint)
       {
-                  return WorldPoint.fromRegion(this.underworldRegionID, mazePoint.getX() + 42, mazePoint.getY() + 31, 3);
+            return WorldPoint.fromRegion(this.underworldRegionID, mazePoint.getX() + 42, mazePoint.getY() + 31, 3);
       }
 
       public boolean isSotetsegActive()

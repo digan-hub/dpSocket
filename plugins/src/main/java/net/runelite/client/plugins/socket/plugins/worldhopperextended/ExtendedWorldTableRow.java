@@ -191,7 +191,7 @@ class ExtendedWorldTableRow extends JPanel {
                 .getTypes().contains(WorldType.HIGH_RISK) || this.world
                 .getTypes().contains(WorldType.DEADMAN)) {
             this.activityField.setForeground(DANGEROUS_WORLD);
-        } else if (this.world.getTypes().contains(WorldType.LEAGUE)) {
+        } else if (this.world.getTypes().contains(WorldType.SEASONAL)) {
             this.activityField.setForeground(LEAGUE_WORLD);
         } else if (this.world.getTypes().contains(WorldType.TOURNAMENT)) {
             this.activityField.setForeground(TOURNAMENT_WORLD);

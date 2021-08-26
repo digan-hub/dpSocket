@@ -102,5 +102,39 @@ public interface SotetsegConfig extends Config {
       )
       default boolean warnBall() { return true;}
 
+      @ConfigItem(
+              position = 7,
+              keyName = "trueMaze",
+              name = "Maze True Tile",
+              description = "Shows your true tile location only when the maze is active"
+      )
+      default boolean trueMaze() { return true;}
 
+      @ConfigItem(
+              position = 8,
+              keyName = "trueMazeColor",
+              name = "Maze True Tile Color",
+              description = "Color for the maze true tile"
+      )
+      default Color trueMazeColor() { return Color.RED;}
+
+      @Range(min = 1, max = 5)
+      @ConfigItem(
+              position = 9,
+              keyName = "trueMazeThicc",
+              name = "Maze True Tile Width",
+              description = "Width for the maze true location tile"
+      )
+      default int trueMazeThicc() { return 2;}
+
+      @ConfigItem(
+              position = 10,
+              keyName = "antiAlias",
+              name = "Maze True Tile Anti-Aliasing Off",
+              description = "Turns off anti-aliasing for the tiles. Makes them more jagged."
+      )
+      default boolean antiAlias()
+      {
+            return false;
+      }
 }

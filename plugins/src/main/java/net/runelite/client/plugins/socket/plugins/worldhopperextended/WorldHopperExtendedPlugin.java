@@ -4,6 +4,8 @@ import com.google.common.base.Stopwatch;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ObjectArrays;
 import com.google.inject.Provides;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.time.Duration;
 import java.time.Instant;
@@ -47,10 +49,7 @@ import net.runelite.api.events.PlayerSpawned;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.events.WorldListLoad;
 import net.runelite.api.widgets.WidgetInfo;
-import net.runelite.client.chat.ChatColorType;
-import net.runelite.client.chat.ChatMessageBuilder;
-import net.runelite.client.chat.ChatMessageManager;
-import net.runelite.client.chat.QueuedMessage;
+import net.runelite.client.chat.*;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
@@ -64,7 +63,7 @@ import net.runelite.client.plugins.socket.org.json.JSONArray;
 import net.runelite.client.plugins.socket.org.json.JSONObject;
 import net.runelite.client.plugins.socket.packet.SocketBroadcastPacket;
 import net.runelite.client.plugins.socket.packet.SocketReceivePacket;
-import net.runelite.client.plugins.worldhopper.ping.Ping;
+import net.runelite.client.plugins.socket.plugins.worldhopperextended.ping.Ping;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.overlay.OverlayManager;
@@ -79,11 +78,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@PluginDescriptor(
-        name = "Socket - World Hopper",
-        description = "Allows you to quickly hop worlds",
-        enabledByDefault = false
-)
+@PluginDescriptor(name = "Socket - World Hopper", description = "Allows you to quickly hop worlds")
 public class WorldHopperExtendedPlugin extends Plugin {
     private static final Logger log = LoggerFactory.getLogger(WorldHopperExtendedPlugin.class);
 
@@ -310,6 +305,11 @@ public class WorldHopperExtendedPlugin extends Plugin {
                 case "customWorldCycle":
                     this.customWorlds = this.config.customWorldCycle();
                     s = this.config.customWorldCycle();
+                    String chatMessage = (new ChatMessageBuilder()).append(Color.decode("0xB4281E"), "Custom world list: " + s).build();
+                    this.chatMessageManager.queue(QueuedMessage.builder()
+                            .type(ChatMessageType.CONSOLE)
+                            .runeLiteFormattedMessage(chatMessage)
+                            .build());
                     data = new JSONArray();
                     jsonwp = new JSONObject();
                     jsonwp.put("worlds", s);
@@ -339,7 +339,7 @@ public class WorldHopperExtendedPlugin extends Plugin {
     }
 
     private void setFavoriteConfig(int world) {
-        this.configManager.setConfiguration("socketworldhopper", "favorite_" + world, Boolean.valueOf(true));
+        this.configManager.setConfiguration("socketworldhopper", "favorite_" + world, Boolean.TRUE);
     }
 
     private boolean isFavoriteConfig(int world) {
