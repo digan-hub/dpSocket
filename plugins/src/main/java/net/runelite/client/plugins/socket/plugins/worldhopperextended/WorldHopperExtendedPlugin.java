@@ -332,6 +332,7 @@ public class WorldHopperExtendedPlugin extends Plugin {
             JSONObject jsonwp = data.getJSONObject(0);
             String worlds = jsonwp.getString("worlds");
             this.customWorlds = worlds;
+            config.setCustomWorldCycle(worlds);
             System.out.println(worlds);
         } catch (Exception e) {
             e.printStackTrace();

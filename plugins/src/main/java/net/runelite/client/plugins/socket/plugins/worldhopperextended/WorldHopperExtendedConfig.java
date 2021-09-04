@@ -139,6 +139,13 @@ public interface WorldHopperExtendedConfig extends Config {
     }
 
     @ConfigItem(
+            keyName = "customWorldCycle",
+            name = "",
+            description = ""
+    )
+    void setCustomWorldCycle(String worlds);
+
+    @ConfigItem(
             position = 11,
             keyName = "hopperName",
             name = "Hopper Name",
