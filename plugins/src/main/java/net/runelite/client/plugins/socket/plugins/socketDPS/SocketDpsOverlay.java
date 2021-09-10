@@ -33,16 +33,14 @@ class SocketDpsOverlay extends OverlayPanel {
     }
 
     public Dimension render(Graphics2D graphics) {
-        if (this.socketDpsConfig.displayOverlay()) {
+        if (this.socketDpsConfig.displayOverlay() && !this.socketDpsCounterPlugin.getMembers().isEmpty() && this.client.getLocalPlayer() != null) {
                 Map<String, Integer> dpsMembers = this.socketDpsCounterPlugin.getMembers();
                 this.panelComponent.getChildren().clear();
                 int tot = 0;
-                if (dpsMembers.isEmpty())
-                    return null;
-                Player player = this.client.getLocalPlayer();
-                if (dpsMembers.containsKey("total")) {
-                    tot = (Integer) dpsMembers.get("total");
-                    dpsMembers.remove("total");
+                String localName = this.client.getLocalPlayer().getName();
+                if (dpsMembers.containsKey("Total")) {
+                    tot = dpsMembers.get("Total");
+                    dpsMembers.remove("Total");
                 }
                 SocketTableComponent tableComponent = new SocketTableComponent();
                 tableComponent.setColumnAlignments(SocketTableAlignment.LEFT, SocketTableAlignment.RIGHT);
@@ -58,27 +56,20 @@ class SocketDpsOverlay extends OverlayPanel {
                     }
                 });
                 this.panelComponent.setPreferredSize(new Dimension(maxWidth + 10, 0));
-                dpsMembers.put("total", tot);
-                if (player.getName() != null && dpsMembers.containsKey(player.getName()) && tot > (Integer) dpsMembers.get(player.getName()) && this.socketDpsConfig.showTotal())
-                    tableComponent.addRow(ColorUtil.prependColorTag("total", Color.red), ColorUtil.prependColorTag(((Integer) dpsMembers.get("total")).toString(), Color.red));
+                dpsMembers.put("Total", tot);
+                if (localName != null && dpsMembers.containsKey(localName) && tot > dpsMembers.get(localName) && this.socketDpsConfig.showTotal())
+                    tableComponent.addRow(ColorUtil.prependColorTag("Total", Color.red), ColorUtil.prependColorTag(dpsMembers.get("Total").toString(), Color.red));
                 if (!tableComponent.isEmpty())
                     this.panelComponent.getChildren().add(tableComponent);
 
-            if (this.socketDpsConfig.backgroundStyle() == SocketDpsConfig.backgroundMode.HIDE)
-            {
+            if (this.socketDpsConfig.backgroundStyle() == SocketDpsConfig.backgroundMode.HIDE) {
                 panelComponent.setBackgroundColor(null);
-                return super.render(graphics);
-            }
-            else if (this.socketDpsConfig.backgroundStyle() == SocketDpsConfig.backgroundMode.STANDARD)
-            {
+            } else if (this.socketDpsConfig.backgroundStyle() == SocketDpsConfig.backgroundMode.STANDARD) {
                 panelComponent.setBackgroundColor(ComponentConstants.STANDARD_BACKGROUND_COLOR);
-                return this.panelComponent.render(graphics);
-            }
-            else if (this.socketDpsConfig.backgroundStyle() == SocketDpsConfig.backgroundMode.CUSTOM)
-            {
+            } else if (this.socketDpsConfig.backgroundStyle() == SocketDpsConfig.backgroundMode.CUSTOM) {
                 panelComponent.setBackgroundColor(new Color(socketDpsConfig.backgroundColor().getRed(), socketDpsConfig.backgroundColor().getGreen(), socketDpsConfig.backgroundColor().getBlue(), socketDpsConfig.backgroundColor().getAlpha()));
-                return this.panelComponent.render(graphics);
             }
+            return this.panelComponent.render(graphics);
         }
         return null;
     }
